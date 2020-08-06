@@ -24,12 +24,10 @@ class App extends React.Component {
   }
 
   openRecipe = (id) => {
-    console.log(id)
     this.setState({activeRecipe: id})
   }
 
   render(){
-    // console.log(this.state)
     return (
       <div className="App">
         <Navbar />

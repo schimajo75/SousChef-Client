@@ -15,6 +15,10 @@ class RecipeModal extends React.Component {
 
     handleClose = () => this.setState({show: false});
     handleShow = () => this.setState({show: true});
+    handleOpen = (id) => {
+      this.handleClose()
+      this.props.openRecipe(id)
+    }
 
     openRecipe = () => {
       console.log("OPEN RECIPE")
@@ -38,7 +42,7 @@ class RecipeModal extends React.Component {
           </Modal.Header>
           <Modal.Body>
             {this.props.recipes.map(recipe => 
-            <Div key={recipe.id}><Link to="#" onClick={() => this.props.openRecipe(recipe.id)}>{recipe.name}</Link></Div>)}
+            <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe.id)}>{recipe.name}</Link></Div>)}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>

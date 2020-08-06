@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import styled from 'styled-components';
-import RecipeModal from '../components/RecipeModal'
+import RecipeModal from '../components/modals/RecipeModal'
 import RecipeCard from '../components/RecipeCard'
+import Notes from '../components/Notes'
 
 const Li = styled.li`
   padding: 1rem;
@@ -38,10 +39,10 @@ render(){
             </Col>
             <Col lg={7} className="active-recipe">
               <RecipeCard activeRecipe={this.props.activeRecipe} recipes={this.props.recipes}/>
-              </Col>
+            </Col>
             <Col lg={3} className="notes-container">
-              <h3>Notes</h3>
-              </Col>
+              <Notes activeRecipe={this.props.activeRecipe} recipes={this.props.recipes}/>
+            </Col>
           </Row>
         </Container>
     )

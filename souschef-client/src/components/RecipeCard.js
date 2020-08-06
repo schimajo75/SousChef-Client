@@ -6,39 +6,31 @@ const Img = styled.img`
   width: 100px;
 `;
 
-class RecipeCard extends React.Component {
+const RecipeCard = props =>  {
 
-  // let { id, name, image, ingredient, step} = this.props
 
-  state = {
-    ingredients: [],
-    steps: [],
-    title: ''
-  }
-
-  render(){
     return (
             <div className="recipe-card">
-                {this.props.recipes.map(recipe => recipe.id === this.props.activeRecipe ?
-                <>
+                {props.recipes.map(recipe => recipe.id === props.activeRecipe ?
+                <div key={recipe.id}>
                 <Img src={recipe.image} alt={recipe.name}></Img>
                 <h3>{recipe.name}</h3>
                 {recipe.ingredient.map(ing => 
                   <ul>
-                    <li>{ing}</li>
+                    <li key={ing.id}>{ing}</li>
                   </ul>
                   )}
                   {recipe.step.map(step => 
                     <ul>
-                    <li>{step}</li>
+                    <li key={step.id}>{step}</li>
                     </ul>
                     )}
-                </>
+                </div>
                 : null
                 )}
             </div>
         )
-  }
+  
     
 }
 
