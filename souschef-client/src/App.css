@@ -2,6 +2,29 @@
   text-align: center;
 }
 
-.resource-list {
-  padding: 1rem;
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300&family=Roboto:ital,wght@1,300&display=swap');
+
+.timer-container {
+  border: seagreen dotted;
+  font-family: 'Source Sans Pro', sans-serif;
 }
+
+.main-row {
+  margin-top: 20px;
+}
+
+.resource-container {
+  border: seagreen dotted;
+  /* font-family: 'Lemonada', cursive; */
+  font-family: 'Roboto', sans-serif;
+}
+
+.active-recipe {
+  border: seagreen dotted;
+}
+
+.notes-container {
+  border: seagreen dotted;
+}
+

@@ -14,21 +14,28 @@ const recipeAPI = 'http://localhost:3000/api/v1/recipes'
 class App extends React.Component {
 
   state = {
-    recipes: []
+    recipes: [],
+    activeRecipe: null
   }
 
   componentDidMount() {
+    // need to set a conditional so that only logged in user's recipes are fetched
     fetch(recipeAPI).then(r => r.json()).then(recipe => this.setState({recipes: recipe }))
   }
 
+  openRecipe = (id) => {
+    console.log(id)
+    this.setState({activeRecipe: id})
+  }
+
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="App">
         <Navbar />
         <Switch>
           <Route path="/recipes/:id" render={(routerProps) => <RecipeCard {...routerProps} /> } />
-          <Route path="/dashboard" render={(routerProps) => <Dashboard {...routerProps} /> } />
+          <Route path="/dashboard" render={(routerProps) => <Dashboard recipes={this.state.recipes} activeRecipe={this.state.activeRecipe} openRecipe={this.openRecipe} {...routerProps} /> } />
           <Route path="/recipes" render={(routerProps) => <RecipeIndex {...routerProps} /> } />
           <Route exact path="/" component={Home}/>
         </Switch>
