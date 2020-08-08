@@ -17,7 +17,6 @@ class Dashboard extends React.Component {
   
 
 render(){
-  // console.log(this.state)
   return (
         <Container>
           <Row>
@@ -29,7 +28,12 @@ render(){
             <Col lg={2} className="resource-container">
               <h3>Resource Bar</h3>
               <ul>
-                <Li> <RecipeModal recipes={this.props.recipes} openRecipe={this.props.openRecipe}/> </Li>
+                <Li> <RecipeModal 
+                // recipes={this.props.recipes} 
+                users={this.props.users} 
+                openRecipe={this.props.openRecipe} 
+                currentUser={this.props.currentUser} 
+                /> </Li>
                 <Li>+ Timer</Li>
                 <Li>Measurement Converter</Li>
                 <Li>Ingredient Replacement</Li>
@@ -38,10 +42,14 @@ render(){
               </ul>
             </Col>
             <Col lg={7} className="active-recipe">
-              <RecipeCard activeRecipe={this.props.activeRecipe} recipes={this.props.recipes}/>
+              <RecipeCard activeRecipe={this.props.activeRecipe} users={this.props.users}/>
             </Col>
             <Col lg={3} className="notes-container">
-              <Notes activeRecipe={this.props.activeRecipe} recipes={this.props.recipes}/>
+              <Notes 
+              activeRecipe={this.props.activeRecipe} 
+              currentUser={this.props.currentUser} 
+              users={this.props.users}
+              newNote={this.props.newNote}/>
             </Col>
           </Row>
         </Container>

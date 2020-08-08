@@ -38,11 +38,13 @@ class RecipeModal extends React.Component {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>My Recipes</Modal.Title>
+            <Modal.Title>{this.props.currentUser}'s Recipes</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {this.props.recipes.map(recipe => 
-            <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe.id)}>{recipe.name}</Link></Div>)}
+            {this.props.users.recipes ? this.props.users.recipes.map(recipe => 
+              <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe.id)}>{recipe.name}</Link></Div>
+              
+            ) : null}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>

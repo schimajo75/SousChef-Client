@@ -3,24 +3,21 @@ import NoteModal from './modals/NoteModal';
 
 const Notes = props =>  {
 
- let entries = []
- props.recipes.map(recipe => recipe.id === props.activeRecipe ?
-  recipe.notes.map(note => 
-    note.entry.map(entry => entries.push(entry))) : null
-  )
-  
-  
-
   return(
     <div>
-      {entries.map(entry => 
-        <ul>
-        <li key={entry.id}>{entry}</li>
-        </ul>
-        )}
-        <NoteModal/>
+      {props.users.notes ? props.users.notes.map(note => 
+          note.recipe_id === props.activeRecipe ?
+              <>
+              <p>{(new Date().getMonth()+1)+'-'+new Date().getDate()+'-'+new Date().getFullYear()}</p>
+              <p key={note.id}>{note.entry}</p>
+              </>
+               :
+              null
+      ) : null}
+        <NoteModal newNote={props.newNote}/>
     </div>
   )
 }
 
 export default Notes
+

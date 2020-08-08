@@ -10,28 +10,41 @@ const RecipeCard = props =>  {
 
 
     return (
-            <div className="recipe-card">
-                {props.recipes.map(recipe => recipe.id === props.activeRecipe ?
-                <div key={recipe.id}>
-                <Img src={recipe.image} alt={recipe.name}></Img>
-                <h3>{recipe.name}</h3>
-                {recipe.ingredient.map(ing => 
-                  <ul>
-                    <li key={ing.id}>{ing}</li>
-                  </ul>
-                  )}
-                  {recipe.step.map(step => 
-                    <ul>
-                    <li key={step.id}>{step}</li>
-                    </ul>
-                    )}
-                </div>
-                : null
-                )}
-            </div>
-        )
-  
-    
-}
+      <div>
+        {props.users.recipes ? props.users.recipes.map(recipe => 
+            recipe.id === props.activeRecipe ? 
+          <div key={recipe.id}>
+            <Img src={recipe.image} alt={recipe.name}></Img>
+            <h3>{recipe.name}</h3>
+            {recipe.ingredient.map(ing => 
+              <p key={ing.id}>{ing}</p>
+              )}
+              {recipe.step.map(step => 
+                <p key={step.id}>{step}</p>)}
+          </div> :
+          null
+          ) : null}
+      </div>
+    )
+  }
+
+  // <div>
+  //       {props.users.map(user => 
+  //         user.recipes.map(recipe =>
+  //           recipe.id === props.activeRecipe ? 
+  //         <div key={recipe.id}>
+  //           <Img src={recipe.image} alt={recipe.name}></Img>
+  //           <h3>{recipe.name}</h3>
+  //           {recipe.ingredient.map(ing => 
+  //             <p key={ing.id}>{ing}</p>
+  //             )}
+  //             {recipe.step.map(step => 
+  //               <p key={step.id}>{step}</p>)}
+  //         </div> :
+  //         null
+  //         ))}
+  //     </div>
+                
 
 export default RecipeCard;
+                    
