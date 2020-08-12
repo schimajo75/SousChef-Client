@@ -1,54 +1,59 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import styled from 'styled-components';
+// import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap'
-import NewRecipeModal from './NewRecipeModal'
 
-const Div = styled.div`
-  padding: 1rem;
-`;
+// const Div = styled.div`
+//   padding: 1rem;
+// `;
 
-class RecipeModal extends React.Component {
+class WineModal extends React.Component {
 
   state = {
     show: false,
+    winePairing: {}
   }
 
     handleClose = () => this.setState({show: false});
     handleShow = () => this.setState({show: true});
     handleOpen = (id) => {
       this.handleClose()
-      this.props.openRecipe(id)
     }
+
+    wineFetch = (name) => {
+      fetch(`https://api.spoonacular.com/food/wine/pairing?food=${name}&apiKey=5dae8dcf899b4a1dbf7637f822014ad6`)
+      .then(r => r.json())
+      .then(wine => this.setState({winePairing: wine }))
+    }
+
   
     render() {
       return (
       <>
         <Button variant="primary" onClick={this.handleShow}>
-          My Recipes
+          Wine Pairing
         </Button>
   
         <Modal
           show={this.state.show}
           onHide={this.handleClose}
-          backdrop="static"
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.users.name}'s Recipes</Modal.Title>
+            <Modal.Title>Wine Pairing</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+          {/* <div>
             {this.props.users.recipes ? this.props.users.recipes.map(recipe => 
-              <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe.id)}>{recipe.name}</Link></Div>
-            ) : null}
+              recipe.id === this.props.activeRecipe ? 
+                this.wineFetch(recipe.name)  
+              :
+          null
+          ) : null}
+        </div> */}
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary"><NewRecipeModal 
-                users={this.props.users} 
-                recipes={this.props.recipes}
-                postRecipe={this.props.postRecipe} 
-                /></Button>
-                <Button variant="secondary" onClick={this.handleClose}>
+            <Button variant="secondary" onClick={this.handleClose}>
               Close
             </Button>
           </Modal.Footer>
@@ -58,4 +63,4 @@ class RecipeModal extends React.Component {
   }   
  }
 
-export default RecipeModal
+ export default WineModal

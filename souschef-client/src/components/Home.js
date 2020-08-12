@@ -5,6 +5,7 @@ class Home extends React.Component {
         isNewUser: false,
         name: '',
         email: '',
+        confirmation: ''
     }
 
     toggleNewUser = () => this.setState(prevState => ({ isNewUser: !prevState.isNewUser, email: '', name: ''}))
@@ -12,15 +13,15 @@ class Home extends React.Component {
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
 
-    // handleSignUp = e => {
-    //     const { isNewUser, password, confirmation, username } = this.state;
-    //     if (isNewUser && password === confirmation) {
-    //       this.props.createUser(username, password, this.props.history)
+    handleSignUp = e => {
+        const { isNewUser, name, email, confirmation } = this.state;
+        if (isNewUser && email === confirmation) {
+          this.props.createUser(name, email, this.props.history)
 
-    //     } else {
-    //       alert('try again!')
-    //     }
-    // }
+        } else {
+          alert('try again!')
+        }
+    }
 
     filterAndRedirect = (id) => {
         this.props.setUser(id)
@@ -49,27 +50,26 @@ class Home extends React.Component {
         )
     }
 
-    // renderSignup = () => {
-    //     const { username, password, confirmation } = this.state;
-    //     return (
-    //         <>
-    //             <input name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
-    //             <input name="password" placeholder="Password" type="password" value={password} onChange={this.handleChange}/>
-    //             <input name="confirmation" placeholder="Confirm Password"  type="password" value={confirmation} onChange={this.handleChange}/>
-    //             <button type="submit" onClick={this.handleSignUp}>Submit</button>
-    //         </>
-    //     )
-    // }
+    renderSignup = () => {
+        const { name, email, confirmation } = this.state;
+        return (
+            <>
+                <input name="name" placeholder="Name" value={name} onChange={this.handleChange}/>
+                <input name="email" placeholder="Email" type="email" value={email} onChange={this.handleChange}/>
+                <input name="confirmation" placeholder="Confirm Email"  type="email" value={confirmation} onChange={this.handleChange}/>
+                <button type="submit" onClick={this.handleSignUp}>Submit</button>
+            </>
+        )
+    }
     
     render(){
-        // let { isNewUser } = this.state;
+        let { isNewUser } = this.state;
         return (
             <div className="auth">
-                {/* <h3 >{isNewUser ? 'Sign Up' : 'Login'}</h3> */}
-                { this.renderLogin() }
-                {/* <div  onClick={this.toggleNewUser}>{isNewUser ? <> <p>got an account? ↓</p> <button >Login Instead</button> </> : <> <p>first time? ↓</p> <button  >Sign Up Here</button> </>}</div>
-                <img className="yogi" src="https://cdn.cnn.com/cnnnext/dam/assets/150923083214-restricted-01-berra-quote-super-169.jpg" alt="yogi">
-                </img> */}
+                <h3 >{isNewUser ? 'Sign Up' : 'Login'}</h3>
+                { isNewUser ? this.renderSignup() : this.renderLogin() }
+                <div  onClick={this.toggleNewUser}>{isNewUser ? <> <p>got an account? ↓</p> <button >Login Instead</button> </> : <> <p>first time? ↓</p> <button  >Sign Up Here</button> </>}</div>
+                
             </div>
         )
     }

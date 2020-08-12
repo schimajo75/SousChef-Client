@@ -6,45 +6,23 @@ const Img = styled.img`
   width: 100px;
 `;
 
-const RecipeCard = props =>  {
-
-
+const RecipeCard = props => {
+  let quantity = props.activeRecipe.recipe_ingredients
     return (
       <div>
-        {props.users.recipes ? props.users.recipes.map(recipe => 
-            recipe.id === props.activeRecipe ? 
-          <div key={recipe.id}>
-            <Img src={recipe.image} alt={recipe.name}></Img>
-            <h3>{recipe.name}</h3>
-            {recipe.ingredient.map(ing => 
-              <p key={ing.id}>{ing}</p>
-              )}
-              {recipe.step.map(step => 
-                <p key={step.id}>{step}</p>)}
-          </div> :
-          null
-          ) : null}
+          {props.activeRecipe.image ? <Img src={props.activeRecipe.image} alt={props.activeRecipe.name}></Img> : null}
+          <h3>{props.activeRecipe.name}</h3>
+          {props.activeRecipe.ingredients ? props.activeRecipe.ingredients.map(ing => 
+              <p key={ing.id}>{quantity ? quantity.map(q => q.ingredient_id === ing.id ? <p key={q.id}>{q.quantity}:</p>: null): null}{ing.name}</p>
+            ) : null}
+            {props.activeRecipe.step ? props.activeRecipe.step.map(step => 
+              <p key={step.id}>{step}</p>
+            ) : null} 
       </div>
     )
   }
-
-  // <div>
-  //       {props.users.map(user => 
-  //         user.recipes.map(recipe =>
-  //           recipe.id === props.activeRecipe ? 
-  //         <div key={recipe.id}>
-  //           <Img src={recipe.image} alt={recipe.name}></Img>
-  //           <h3>{recipe.name}</h3>
-  //           {recipe.ingredient.map(ing => 
-  //             <p key={ing.id}>{ing}</p>
-  //             )}
-  //             {recipe.step.map(step => 
-  //               <p key={step.id}>{step}</p>)}
-  //         </div> :
-  //         null
-  //         ))}
-  //     </div>
                 
 
 export default RecipeCard;
+
                     

@@ -25,7 +25,6 @@ class NoteModal extends React.Component {
 
   
     render() {
-      // console.log(this.state)
       return (
       <>
         <Button variant="primary" onClick={this.handleShow}>

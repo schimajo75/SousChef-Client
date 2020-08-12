@@ -10,7 +10,6 @@ const Navbar = props => {
             :
             <Link to="/dashboard">Dashboard</Link>
             }
-            <Link to="/dashboard">About</Link>
         </div>
     )
 }

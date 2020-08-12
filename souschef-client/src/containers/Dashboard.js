@@ -2,18 +2,16 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import styled from 'styled-components';
 import RecipeModal from '../components/modals/RecipeModal'
+import WineModal from '../components/modals/WineModal'
 import RecipeCard from '../components/RecipeCard'
 import Notes from '../components/Notes'
+import TimerContainer from './TimerContainer'
 
 const Li = styled.li`
   padding: 1rem;
 `;
 
 class Dashboard extends React.Component {
-
-  state = {
-    activeRecipe: null
-  }
   
 
 render(){
@@ -21,7 +19,7 @@ render(){
         <Container>
           <Row>
             <Col className="timer-container">
-              <h4>Timer Container</h4>
+              <TimerContainer/>
             </Col>
           </Row>
           <Row className="main-row">
@@ -29,26 +27,30 @@ render(){
               <h3>Resource Bar</h3>
               <ul>
                 <Li> <RecipeModal 
-                // recipes={this.props.recipes} 
                 users={this.props.users} 
-                openRecipe={this.props.openRecipe} 
-                currentUser={this.props.currentUser} 
+                recipes={this.props.recipes}
+                openRecipe={this.props.openRecipe}
+                postRecipe={this.props.postRecipe}
                 /> </Li>
                 <Li>+ Timer</Li>
                 <Li>Measurement Converter</Li>
                 <Li>Ingredient Replacement</Li>
-                <Li>Wine Pairing</Li>
+                <Li> <WineModal 
+                recipes={this.props.recipes} 
+                users={this.props.users}
+                /> </Li>
                 <Li>Entertainment</Li>
               </ul>
             </Col>
             <Col lg={7} className="active-recipe">
-              <RecipeCard activeRecipe={this.props.activeRecipe} users={this.props.users}/>
+              <RecipeCard 
+              activeRecipe={this.props.activeRecipe} 
+              recipeIngredients={this.props.recipeIngredients}
+              />
             </Col>
             <Col lg={3} className="notes-container">
               <Notes 
               activeRecipe={this.props.activeRecipe} 
-              currentUser={this.props.currentUser} 
-              users={this.props.users}
               newNote={this.props.newNote}/>
             </Col>
           </Row>
