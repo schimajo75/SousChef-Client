@@ -35,16 +35,16 @@ class RecipeModal extends React.Component {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.users.name}'s Recipes</Modal.Title>
+            <Modal.Title>{this.props.activeUser.name}'s Recipes</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {this.props.users.recipes ? this.props.users.recipes.map(recipe => 
+            {this.props.activeUser.recipes ? this.props.activeUser.recipes.map(recipe => 
               <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe.id)}>{recipe.name}</Link></Div>
             ) : null}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary"><NewRecipeModal 
-                users={this.props.users} 
+                activeUser={this.props.activeUser} 
                 recipes={this.props.recipes}
                 postRecipe={this.props.postRecipe} 
                 /></Button>

@@ -15,15 +15,18 @@ class WineModal extends React.Component {
   }
 
     handleClose = () => this.setState({show: false});
-    handleShow = () => this.setState({show: true});
-    handleOpen = (id) => {
-      this.handleClose()
+    handleShow = () => {
+      this.setState({show: true});
+      this.props.activeRecipe ? this.wineFetch(this.props.activeRecipe.name) : alert("please choose a recipe")
     }
+    
 
     wineFetch = (name) => {
+      console.log("searching for wine to pair with:", name)
       fetch(`https://api.spoonacular.com/food/wine/pairing?food=${name}&apiKey=5dae8dcf899b4a1dbf7637f822014ad6`)
       .then(r => r.json())
-      .then(wine => this.setState({winePairing: wine }))
+      .then(wine => console.log(wine))
+      // .then(wine => this.setState({winePairing: wine }))
     }
 
   
@@ -43,14 +46,7 @@ class WineModal extends React.Component {
             <Modal.Title>Wine Pairing</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          {/* <div>
-            {this.props.users.recipes ? this.props.users.recipes.map(recipe => 
-              recipe.id === this.props.activeRecipe ? 
-                this.wineFetch(recipe.name)  
-              :
-          null
-          ) : null}
-        </div> */}
+          
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>

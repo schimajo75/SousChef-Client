@@ -26,20 +26,20 @@ render(){
             <Col lg={2} className="resource-container">
               <h3>Resource Bar</h3>
               <ul>
-                <Li> <RecipeModal 
-                users={this.props.users} 
+                <Li> <RecipeModal  
+                activeUser={this.props.activeUser}
                 recipes={this.props.recipes}
                 openRecipe={this.props.openRecipe}
                 postRecipe={this.props.postRecipe}
                 /> </Li>
-                <Li>+ Timer</Li>
                 <Li>Measurement Converter</Li>
                 <Li>Ingredient Replacement</Li>
                 <Li> <WineModal 
                 recipes={this.props.recipes} 
-                users={this.props.users}
+                activeRecipe={this.props.activeRecipe}
+                activeUser={this.props.activeUser}
                 /> </Li>
-                <Li>Entertainment</Li>
+                {/* <Li>Entertainment</Li> */}
               </ul>
             </Col>
             <Col lg={7} className="active-recipe">
@@ -51,7 +51,8 @@ render(){
             <Col lg={3} className="notes-container">
               <Notes 
               activeRecipe={this.props.activeRecipe} 
-              newNote={this.props.newNote}/>
+              newNote={this.props.newNote}
+              deleteNote={this.props.deleteNote}/>
             </Col>
           </Row>
         </Container>

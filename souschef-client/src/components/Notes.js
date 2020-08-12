@@ -14,7 +14,7 @@ const Notes = props =>  {
                 <p key={note.id}>{note.entry}</p>
               </Col>
               <Col>
-                <Button variant="secondary" size="sm">
+                <Button variant="secondary" size="sm" onClick={() => props.deleteNote(note.id)}>
                 X
                 </Button>
               </Col>

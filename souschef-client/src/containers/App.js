@@ -19,6 +19,7 @@ class App extends React.Component {
     users: [],
     recipes: [],
     recipeIngredients: [],
+    activeUser: {},
     activeRecipe: {},
   }
 
@@ -44,8 +45,9 @@ class App extends React.Component {
   }
 
   setUser = (id) => {
+    this.setState({activeRecipe: {}})
      let filtered = this.state.users.filter(user => user.id === id)
-     this.setState({users: filtered[0]})
+     this.setState({activeUser: filtered[0]})
   }
 
   openRecipe = (id) => {
@@ -67,8 +69,7 @@ class App extends React.Component {
     .then(r => r.json())
     .then(recipe => {
       let newRecipe = this.state.recipes.find(rec => rec.id === recipe.recipe_id)
-      this.setState({users: {...this.state.users, recipes: [...this.state.users.recipes, newRecipe]}})
-      console.log(this.state.users.recipes) 
+      this.setState({activeUser: {...this.state.activeUser, recipes: [...this.state.activeUser.recipes, newRecipe]}}) 
     })
   }
 
@@ -84,30 +85,46 @@ class App extends React.Component {
       }
     })
     .then(r => r.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+    })
   }
 
   
   // updateNote = (newNote) => {
-  //   this.setState({activeRecipe: {...this.state.activeRecipe, recipe_lists: [...this.state.activeRecipe.recipe_lists], notes: [...this.state.activeRecipe.recipe_lists.notes, newNote]}})}
+  //   this.setState({activeRecipe: {...this.state.activeRecipe, recipe_lists: [...this.state.activeRecipe.recipe_lists, this.state.activeRecipe.recipe_lists[0]: {}}})
+  // }
+
+  deleteNote = (id) => {
+    fetch(`${notesAPI}/${id}`, {
+      method: 'DELETE',
+  })
+//   .then((json) => {
+//     let editedActiveRecipe = this.state.activeUser.recipe_lists[0].notes.filter(note => note.id !== id)
+//     this.setState({activeRecipe: editedActiveRecipe})
+//  })
+ 
+}
 
 
   render(){
-    console.log(this.state.users.recipes)
+    // console.log(this.state.activeRecipe)
     return (
       <div className="App">
-        <Navbar users={this.state.users} 
+        <Navbar activeUser={this.state.activeUser} 
         />
         <Switch>
 
           <Route path="/dashboard/:id" render={(routerProps) => <Dashboard 
-          users={this.state.users} 
+          users={this.state.users}
+          activeUser={this.state.activeUser} 
           recipes={this.state.recipes}
           recipeIngredients={this.state.recipeIngredients}
           activeRecipe={this.state.activeRecipe} 
           openRecipe={this.openRecipe} 
           postRecipe={this.postRecipe}
           newNote={this.newNote}
+          deleteNote={this.deleteNote}
           {...routerProps} 
           /> } />
 

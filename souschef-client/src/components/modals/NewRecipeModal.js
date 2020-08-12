@@ -16,8 +16,8 @@ class NewRecipeModal extends React.Component {
     handleClose = () => this.setState({show: false});
     handleShow = () => this.setState({show: true});
     handleOpen = (rec) => {
-      let post = this.props.users.recipes.filter(recipe => recipe.id !== rec.id)
-      post.length === this.props.users.recipes.length ? this.props.postRecipe(rec.id, this.props.users.id) : alert("You already have that recipe. Please choose another")
+      let post = this.props.activeUser.recipes.filter(recipe => recipe.id !== rec.id)
+      post.length === this.props.activeUser.recipes.length ? this.props.postRecipe(rec.id, this.props.activeUser.id) : alert("You already have that recipe. Please choose another")
     }
 
     render() {
