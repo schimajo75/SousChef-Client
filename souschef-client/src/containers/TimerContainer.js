@@ -8,9 +8,9 @@ class TimerContainer extends React.Component {
     timerIDs: []
   }
 
-  // componentDidMount() {
-  //   this.handleAddTimer()
-  // }
+  handleChange = e => {
+    this.setState({[e.target.name]: e.target.value})
+  }
 
   render() {
 
@@ -27,7 +27,7 @@ class TimerContainer extends React.Component {
   }
 
   renderTimers = () => this.state.timerIDs.map(id => {
-    return <Col lg={2}> <Timer key={id} id={id} removeTimer={this.removeTimer} /> </Col>
+    return <Col lg={2} key={id}> <Timer id={id} removeTimer={this.removeTimer} /> </Col>
   })
 
   handleAddTimer = () => {

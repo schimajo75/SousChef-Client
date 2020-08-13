@@ -52,12 +52,19 @@ const handleStartStopClick = () => {
   }
 }
 
+const handleReset = () => {
+  clearInterval(intervalId)
+  setIntervalId(null)
+  setTimerLength(0)
+}
+
 const timerLengthMinutes = moment.duration(timerLength, 's').format('mm:ss', {trim: false})
 
 return (
   <div>
-    <p>Timer</p>
+    <input></input>
     <Button onClick={handleStartStopClick}>{isStarted ? 'Stop' : 'Start'}</Button>
+    <Button onClick={handleReset}>Reset</Button>
     <p>{timerLengthMinutes}</p>
     <Button onClick={decrementTimerLength}>-1</Button>
     <Button onClick={handleClose}>X</Button>
