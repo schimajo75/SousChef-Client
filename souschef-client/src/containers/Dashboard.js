@@ -32,6 +32,7 @@ render(){
                 openRecipe={this.props.openRecipe}
                 postRecipe={this.props.postRecipe}
                 /> </Li>
+                <Li>Create Recipe</Li>
                 <Li>Measurement Converter</Li>
                 <Li>Ingredient Replacement</Li>
                 <Li> <WineModal 
@@ -44,13 +45,15 @@ render(){
             </Col>
             <Col lg={7} className="active-recipe">
               <RecipeCard 
-              activeRecipe={this.props.activeRecipe} 
+              activeRecipe={this.props.activeRecipe}
+              activeUser={this.props.activeUser} 
               recipeIngredients={this.props.recipeIngredients}
               />
             </Col>
             <Col lg={3} className="notes-container">
               <Notes 
               activeRecipe={this.props.activeRecipe} 
+              activeUser={this.props.activeUser} 
               newNote={this.props.newNote}
               deleteNote={this.props.deleteNote}/>
             </Col>

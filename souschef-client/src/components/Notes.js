@@ -6,8 +6,10 @@ const Notes = props =>  {
 
   return(
     <div>
-      {props.activeRecipe.recipe_lists ? props.activeRecipe.recipe_lists[0].notes.map(note => 
-        <>
+      {props.activeUser.recipe_lists ? props.activeUser.recipe_lists.map(list =>
+        list.recipe_id === props.activeRecipe.id ?
+          list.notes.map(note =>
+            <div>
           <p>{(new Date().getMonth()+1)+'-'+new Date().getDate()+'-'+new Date().getFullYear()}</p>
             <Row>
               <Col>
@@ -19,8 +21,11 @@ const Notes = props =>  {
                 </Button>
               </Col>
             </Row>
-         </>
-      ) : null}
+         </div>
+            ) : null
+       
+  ) 
+       : null}
         <NoteModal newNote={props.newNote}/>
     </div>
   )

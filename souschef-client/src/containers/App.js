@@ -19,6 +19,7 @@ class App extends React.Component {
     users: [],
     recipes: [],
     recipeIngredients: [],
+    recipeLists: [],
     activeUser: {},
     activeRecipe: {},
   }
@@ -40,7 +41,7 @@ class App extends React.Component {
     })
     .then(r => r.json())
     .then(user => {
-      this.setState({users: user}, () => history.push(`/recipes/${user.id}`))
+      this.setState({users: [...this.state.users, user], activeUser: user, activeRecipe: {}}, () => history.push(`/dashboard/${user.id}`))
     })
   }
 
@@ -70,45 +71,52 @@ class App extends React.Component {
     .then(recipe => {
       let newRecipe = this.state.recipes.find(rec => rec.id === recipe.recipe_id)
       this.setState({activeUser: {...this.state.activeUser, recipes: [...this.state.activeUser.recipes, newRecipe]}}) 
+      this.setState({activeUser: {...this.state.activeUser, recipe_lists: [...this.state.activeUser.recipe_lists, recipe]}}) 
     })
   }
 
+
   newNote = (note) => {
+    let targetList = this.state.activeUser.recipe_lists.find(list => list.recipe_id === this.state.activeRecipe.id)
     fetch(notesAPI, {
       method: 'POST',
       body: JSON.stringify({
         entry: note,
-        recipe_list_id: `${this.state.activeRecipe.recipe_lists[0]["id"]}`,
+        recipe_list_id: targetList.id
       }),
       headers: {
         "Content-type": "application/json"
       }
     })
     .then(r => r.json())
-    .then(data => {
-      console.log(data)
-    })
-  }
+    .then(note => {
+      let targetListIndex = this.state.activeUser.recipe_lists.findIndex(list => list.recipe_id === this.state.activeRecipe.id)
+      targetList.notes.push(note)
+      let copyUser = {...this.state.activeUser}
+      copyUser.recipe_lists.splice(targetListIndex, 1, targetList)
+      this.setState({activeUser: copyUser}) 
+    }
+  )
+}
 
-  
-  // updateNote = (newNote) => {
-  //   this.setState({activeRecipe: {...this.state.activeRecipe, recipe_lists: [...this.state.activeRecipe.recipe_lists, this.state.activeRecipe.recipe_lists[0]: {}}})
-  // }
 
   deleteNote = (id) => {
     fetch(`${notesAPI}/${id}`, {
       method: 'DELETE',
   })
-//   .then((json) => {
-//     let editedActiveRecipe = this.state.activeUser.recipe_lists[0].notes.filter(note => note.id !== id)
-//     this.setState({activeRecipe: editedActiveRecipe})
-//  })
- 
+  .then((json) => {
+    let targetList = this.state.activeUser.recipe_lists.find(list => list.recipe_id === this.state.activeRecipe.id)
+    let targetListIndex = this.state.activeUser.recipe_lists.findIndex(list => list.recipe_id === this.state.activeRecipe.id)
+    let targetNoteIndex = targetList.notes.findIndex(note => note.id === id)
+    let editedUser = {...this.state.activeUser}
+    editedUser.recipe_lists[targetListIndex].notes.splice(targetNoteIndex, 1)
+    this.setState({activeUser: editedUser})
+ })
 }
 
 
   render(){
-    // console.log(this.state.activeRecipe)
+    // console.log(this.state.activeUser.recipe_lists)
     return (
       <div className="App">
         <Navbar activeUser={this.state.activeUser} 

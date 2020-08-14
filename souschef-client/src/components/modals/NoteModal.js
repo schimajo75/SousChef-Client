@@ -19,6 +19,7 @@ class NoteModal extends React.Component {
 
     // Once a specific user is signed in, HandleSubmitfunction needs to run a Post fetch to Notes associated with user and recipe
     handleSubmit = (note) => {
+      
       this.props.newNote(note)
       this.handleClose()
     }
