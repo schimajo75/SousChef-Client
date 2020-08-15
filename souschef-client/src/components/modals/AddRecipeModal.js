@@ -7,7 +7,7 @@ const Div = styled.div`
   padding: 1rem;
 `;
 
-class NewRecipeModal extends React.Component {
+class AddRecipeModal extends React.Component {
 
   state = {
     show: false,
@@ -35,7 +35,7 @@ class NewRecipeModal extends React.Component {
             <Modal.Title>Add New Recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {this.props.recipes.map(recipe => 
+            {this.props.recipes.sort((a, b) => a.name !== b.name ? a.name < b.name ? -1 : 1 : 0).map(recipe => 
               <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe)}>{recipe.name}</Link></Div>
             )}
           </Modal.Body>
@@ -50,4 +50,4 @@ class NewRecipeModal extends React.Component {
   }   
  }
 
-export default NewRecipeModal
+export default AddRecipeModal

@@ -1,8 +1,11 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import RecipeModal from '../components/modals/RecipeModal'
 import WineModal from '../components/modals/WineModal'
+import IngSubModal from '../components/modals/IngSubModal'
+import MeasConvModal from '../components/modals/MeasConvModal'
 import RecipeCard from '../components/RecipeCard'
 import Notes from '../components/Notes'
 import TimerContainer from './TimerContainer'
@@ -32,15 +35,15 @@ render(){
                 openRecipe={this.props.openRecipe}
                 postRecipe={this.props.postRecipe}
                 /> </Li>
-                <Li>Create Recipe</Li>
-                <Li>Measurement Converter</Li>
-                <Li>Ingredient Replacement</Li>
+                <Li><Link to="/create"><Button>Create New Recipe</Button></Link></Li>
+                <Li> <MeasConvModal /> </Li>
+                <Li> <IngSubModal/> </Li>
                 <Li> <WineModal 
                 recipes={this.props.recipes} 
                 activeRecipe={this.props.activeRecipe}
                 activeUser={this.props.activeUser}
                 /> </Li>
-                {/* <Li>Entertainment</Li> */}
+                <Li><a href="https://www.seamless.com/"><Button variant="danger">S.O.S.</Button></a></Li>
               </ul>
             </Col>
             <Col lg={7} className="active-recipe">
