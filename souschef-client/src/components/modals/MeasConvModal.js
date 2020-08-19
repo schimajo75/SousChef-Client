@@ -18,7 +18,7 @@ class MeasConvModal extends React.Component {
     answer: ""
   }
 
-    handleClose = () => this.setState({show: false, replacement: {}});
+    handleClose = () => this.setState({show: false, answer: ""});
     handleShow = () => {
       this.setState({show: true});
     }
@@ -42,10 +42,10 @@ class MeasConvModal extends React.Component {
 
   
     render() {
-      console.log(this.state)
+      console.log(this.state.answer)
       return (
       <>
-        <Button variant="primary" onClick={this.handleShow}>
+        <Button variant="outline-danger" onClick={this.handleShow}>
           Conversion
         </Button>
   
@@ -55,7 +55,7 @@ class MeasConvModal extends React.Component {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Measurement Conversion</Modal.Title>
+            <Modal.Title className="convModalTitle">Measurement Conversion</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <Form>
@@ -83,9 +83,11 @@ class MeasConvModal extends React.Component {
           </Row>
           </Modal.Body>
           <Modal.Footer>
+            {this.state.answer ? null : 
             <Button variant="primary" onClick={this.handleSubmit}>
-              Submit
+            Submit
             </Button>
+            }
           </Modal.Footer>
         </Modal>
       </>

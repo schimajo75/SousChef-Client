@@ -32,9 +32,9 @@ class AddRecipeModal extends React.Component {
           onHide={this.handleClose}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Add New Recipe</Modal.Title>
+            <Modal.Title className="addRecModalTitle">Add New Recipe</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="addRecModalBody">
             {this.props.recipes.sort((a, b) => a.name !== b.name ? a.name < b.name ? -1 : 1 : 0).map(recipe => 
               <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe)}>{recipe.name}</Link></Div>
             )}

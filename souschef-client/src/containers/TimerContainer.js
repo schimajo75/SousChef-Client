@@ -1,6 +1,6 @@
 import React from 'react';
 import Timer from '../components/Timer'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 
 class TimerContainer extends React.Component {
 
@@ -16,13 +16,13 @@ class TimerContainer extends React.Component {
 
     return (
       <>
-        <button onClick={this.handleAddTimer}>Add New Timer</button>
+        <Button className="addTimer" variant="outline-info" onClick={this.handleAddTimer}>Timer</Button>
         <Container>
-        <Row className="justify-content-md-center">
+        <Row className="timers">
         {this.renderTimers()}
         </Row>
         </Container>
-        </>
+      </>
     );
   }
 

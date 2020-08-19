@@ -56,6 +56,11 @@ class App extends React.Component {
      this.setState({activeUser: filtered[0]})
   }
 
+  logout = () => {
+    this.setState({activeUser: {}, activeRecipe: {}})
+    this.history.push(`/`)
+  }
+
   openRecipe = (id) => {
     let activeRecipe = this.state.recipes.find(recipe => recipe.id === id)
     this.setState({activeRecipe: activeRecipe})
@@ -140,11 +145,13 @@ class App extends React.Component {
   render(){
     // console.log(this.state.activeUser.recipe_lists)
     return (
-      <div className="App">
+      <>
         <Navbar activeUser={this.state.activeUser} 
         />
+        <div className="App">
         <Switch>
-
+          
+          
           <Route path="/dashboard/:id" render={(routerProps) => <Dashboard 
           users={this.state.users}
           activeUser={this.state.activeUser} 
@@ -155,6 +162,7 @@ class App extends React.Component {
           postRecipe={this.postRecipe}
           newNote={this.newNote}
           deleteNote={this.deleteNote}
+          logout={this.logout}
           {...routerProps} 
           /> } />
 
@@ -167,14 +175,17 @@ class App extends React.Component {
           createRecipe={this.createRecipe}
           {...routerProps} 
           /> } />
-
+          
+          <div id="home">
           <Route exact path="/" render={(routerProps) => <Home 
           {...routerProps} 
           users={this.state.users} 
           setUser={this.setUser}
           createUser={this.createUser}/> }/>
+          </div>
         </Switch>
-      </div>
+        </div>
+        </>
     );
   }
 }

@@ -10,7 +10,7 @@ import RecipeCard from '../components/RecipeCard'
 import Notes from '../components/Notes'
 import TimerContainer from './TimerContainer'
 
-const Li = styled.li`
+const Li = styled.p`
   padding: 1rem;
 `;
 
@@ -19,7 +19,9 @@ class Dashboard extends React.Component {
 
 render(){
   return (
-        <Container>
+    <>
+    <img src="https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" id="bg" alt="curring board"></img>
+        <Container className="dashboard">
           <Row>
             <Col className="timer-container">
               <TimerContainer/>
@@ -27,15 +29,14 @@ render(){
           </Row>
           <Row className="main-row">
             <Col lg={2} className="resource-container">
-              <h3>Resource Bar</h3>
-              <ul>
+              {/* <h3 id="resource-header">Resource Bar</h3> */}
                 <Li> <RecipeModal  
                 activeUser={this.props.activeUser}
                 recipes={this.props.recipes}
                 openRecipe={this.props.openRecipe}
                 postRecipe={this.props.postRecipe}
                 /> </Li>
-                <Li><Link to="/create"><Button>Create New Recipe</Button></Link></Li>
+                <Li><Link to="/create"><Button variant="outline-danger">Create New Recipe</Button></Link></Li>
                 <Li> <MeasConvModal /> </Li>
                 <Li> <IngSubModal/> </Li>
                 <Li> <WineModal 
@@ -43,8 +44,10 @@ render(){
                 activeRecipe={this.props.activeRecipe}
                 activeUser={this.props.activeUser}
                 /> </Li>
-                <Li><a href="https://www.seamless.com/"><Button variant="danger">S.O.S.</Button></a></Li>
-              </ul>
+                {/* <Li><a href="https://www.seamless.com/"><Button variant="danger">S.O.S.</Button></a></Li> */}
+
+                {this.props.activeUser ? <Li><a href="http://localhost:3001/"><Button onClick={this.props.logout} variant="outline-danger">Logout</Button></a></Li>
+                : null}
             </Col>
             <Col lg={7} className="active-recipe">
               <RecipeCard 
@@ -62,6 +65,7 @@ render(){
             </Col>
           </Row>
         </Container>
+        </>
     )
 }
     

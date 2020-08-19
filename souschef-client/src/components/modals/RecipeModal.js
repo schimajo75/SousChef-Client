@@ -24,33 +24,28 @@ class RecipeModal extends React.Component {
     render() {
       return (
       <>
-        <Button variant="primary" onClick={this.handleShow}>
+        <Button variant="outline-danger" onClick={this.handleShow}>
           My Recipes
         </Button>
   
-        <Modal
+        <Modal className="recipeModal"
           show={this.state.show}
           onHide={this.handleClose}
-          backdrop="static"
-          keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.activeUser.name}'s Recipes</Modal.Title>
+            <Modal.Title className="recModTitle">{this.props.activeUser.name}'s Recipes</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="recipeModalBody">
             {this.props.activeUser.recipes ? this.props.activeUser.recipes.sort((a, b) => a.name !== b.name ? a.name < b.name ? -1 : 1 : 0).map(recipe => 
               <Div key={recipe.id}><Link to="#" onClick={() => this.handleOpen(recipe.id)}>{recipe.name}</Link></Div>
             ) : null}
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer className="recModalFoot">
             <Button variant="primary"><AddRecipeModal 
                 activeUser={this.props.activeUser} 
                 recipes={this.props.recipes}
                 postRecipe={this.props.postRecipe} 
                 /></Button>
-                <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
           </Modal.Footer>
         </Modal>
       </>

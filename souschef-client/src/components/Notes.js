@@ -10,15 +10,19 @@ const Notes = props =>  {
         list.recipe_id === props.activeRecipe.id ?
           list.notes.map(note =>
             <div>
-          <p>{(new Date().getMonth()+1)+'-'+new Date().getDate()+'-'+new Date().getFullYear()}</p>
-            <Row>
-              <Col>
-                <p key={note.id}>{note.entry}</p>
-              </Col>
-              <Col>
-                <Button variant="secondary" size="sm" onClick={() => props.deleteNote(note.id)}>
+              <Row>
+                <Col>
+                <p>{(new Date().getMonth()+1)+'-'+new Date().getDate()+'-'+new Date().getFullYear()}</p>
+                </Col>
+                <Col>
+                <Button variant="outline-secondary" size="sm" onClick={() => props.deleteNote(note.id)}>
                 X
                 </Button>
+                </Col>
+              </Row>
+            <Row>
+              <Col className="noteEntry">
+                <p key={note.id}>{note.entry}</p>
               </Col>
             </Row>
          </div>

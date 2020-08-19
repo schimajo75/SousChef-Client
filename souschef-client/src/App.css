@@ -1,34 +1,299 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@562&display=swap");
+
+
 .App {
+  /* background-image: url("https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-repeat: no-repeat;
+  background-size: cover */
+}
+
+/* Navbar */
+.navbar {
+    font-family: Montserrat;
+    background-color: transparent;
+    z-index: 10;
+    position: fixed;
+}
+
+.navlinks {
+  color: rgb(255, 111, 0);
+  font-size: larger;
+}
+
+.Container {
+  position: relative;
+  min-height: 300px;
+  max-height: 800px;
+  overflow: hidden;
+  margin-bottom: 500px;
+}
+
+/* Recipe Modal */
+.recipeModal {
+  font-family: Montserrat;
+}
+
+.recipeModalBody {
+  background-image: url('https://photo-cdn.icons8.com/assets/previews/415/c03af46a-7613-4cf6-b3e9-c89d29d5738e2x.jpg');
+  background-position: center;
+  font-family: Montserrat;
+  font-size: 20px;
+}
+
+.recModalFoot {
+  padding-right: 3rem;
+  /* text-align: center; */
+  /* justify-content: space-around; */
+}
+
+.recModTitle {
+  margin-left: 9rem;
+}
+
+.addRecModalBody {
+  background-image: url(https://photo-cdn.icons8.com/assets/previews/55/688a85cc-9ba8-4c4d-8b29-9c68a35196ba2x.jpg);
+  background-position: center;
+  background-size: cover; 
+  font-family: Montserrat;
+  font-size: 30px;
+}
+
+.addRecModalTitle {
+  font-family: Montserrat;
+  margin-left: 9rem;
+}
+
+.convModalTitle {
+  font-family: Montserrat;
+  margin-left: 9rem;
+}
+
+.ingSubModalTitle {
+  font-family: Montserrat;
+  margin-left: 6rem;
+}
+
+
+
+.wineModalTitle {
+  font-family: Montserrat;
+  margin-left: 9rem;
+}
+
+/* Recipe Card */
+.ingQuant {
+  text-align: right;
+  font-weight: bold;
+  }
+
+.ingName {
+text-align: left;
+margin-right: 5rem
+}
+
+.ing {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.recName {
+  padding-top: 30px;
+  font-family: Montserrat;
+}
+
+.recImage {
   text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300&family=Roboto:ital,wght@1,300&display=swap');
+.recSteps {
+  text-align: justify;
+}
+.step {
+  padding-bottom: 15px;
+}
 
+/* Timer styling */
 .timer-container {
-  border: seagreen dotted;
   font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  border-bottom: solid seagreen thin;
+}
+
+.timers {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.timer {
+  /* position: fixed; */
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  border: solid thin black;
+  border-radius: 10%;
+  background-color: cornsilk;
+}
+
+.counter {
+  font-size: 20px;
+  margin-bottom: -5px;
+  font-family: Russo One;
+}
+
+.timerInput {
+  margin-left: -3px;
+  text-align: center;
+  width: 6rem;
+}
+
+.timerButton {
+  border-radius: 20%;
+}
+
+.addTimer {
+  font-family: Russo One;
+  margin-top: 5px;
 }
 
 .main-row {
   margin-top: 20px;
+  text-align: left;
 }
 
+/* Dashboard */
+.dashboard {
+  /* background-image: url("https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Resource Bar */
+#resource-header {
+  font-family: Montserrat;
+}
 .resource-container {
-  border: seagreen dotted;
-  /* font-family: 'Lemonada', cursive; */
-  font-family: 'Roboto', sans-serif;
+  /* border: seagreen dotted; */
+  position: fixed;
+  font-family: Russo One;
+  padding-right: 5rem;
+  text-align: center;
+  padding-top: 10px;
+  /* background-color: paleturquoise; */
 }
 
+/* Active Recipe */
 .active-recipe {
-  border: seagreen dotted;
+  /* border: seagreen dotted; */
+  /* background-color: paleturquoise; */
 }
 
+/* Notes */
 .notes-container {
-  border: seagreen dotted;
+  border-left: seagreen solid;
+  text-align: center;
+  /* background-color: paleturquoise; */
 }
 
-.recipe-index {
-  border: seagreen dotted;
+.addNote {
+  margin-top: 20px;
+  font-family: Russo One;
 }
 
+.noteEntry {
+  text-align: left;
+  border-bottom: solid thin black;
+}
+
+/* Login */
+#home{
+  
+}
+
+.auth {
+  color: crimson;
+  font-family: Montserrat;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Dancing Script', cursive;
+  z-index: 1;
+  text-align: center;
+  width: 65%;
+  height: 250px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+   user-select: none;
+}
+
+.logo b{
+  font-family: 'Dancing Script', cursive;
+  font-size: 100px;
+  color: #fee;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
+}
+.logo b span{
+  animation: blink linear infinite 2s;
+}
+.logo b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: #333;
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+
+.login-toggle {
+  padding-top: 30px;
+  color: crimson;
+  font-family: Montserrat;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Col, Row } from 'react-bootstrap';
+import { Container, Button, Form, Col, Row } from 'react-bootstrap';
 
 // import styled from 'styled-components';
 
@@ -32,6 +32,7 @@ class CreateRecipe extends React.Component {
       console.log(this.state.ingredients)
       return (
         <>
+        <Container>
           <Form>
             <Row>
             <Col>
@@ -62,6 +63,8 @@ class CreateRecipe extends React.Component {
             </Row>
             <Button>Submit</Button>
           </Form>
+        </Container>
+          
         </>
       )
     }

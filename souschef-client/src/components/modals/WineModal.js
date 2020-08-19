@@ -14,8 +14,10 @@ class WineModal extends React.Component {
     winePairing: {}
   }
 
-  handleClose = () => this.setState({show: false, replacement: {}});
-  handleShow = () => {
+  handleClose = () => {
+    this.setState({show: false, winePairing: {}});
+  }
+    handleShow = () => {
     this.setState({show: true});
   }
 
@@ -37,7 +39,7 @@ class WineModal extends React.Component {
     render() {
       return (
       <>
-        <Button variant="primary" onClick={this.handleShow}>
+        <Button variant="outline-danger" onClick={this.handleShow}>
           Wine Pairing
         </Button>
   
@@ -47,9 +49,9 @@ class WineModal extends React.Component {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Wine Pairing</Modal.Title>
+            <Modal.Title className="wineModalTitle">Wine Pairing</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className='wineModalBody'>
           <Form>
             <Form.Row>
               <Col>
@@ -72,9 +74,11 @@ class WineModal extends React.Component {
           </Row>
           </Modal.Body>
           <Modal.Footer>
+            {this.state.winePairing.pairedWines ? null : 
             <Button variant="primary" onClick={this.handleSubmit}>
-              Submit
+            Submit
             </Button>
+            }
           </Modal.Footer>
         </Modal>
       </>

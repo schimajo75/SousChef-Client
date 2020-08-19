@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format'
-import { Button } from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import { useState } from 'react';
 
 momentDurationFormatSetup(moment)
@@ -61,19 +61,20 @@ const handleReset = () => {
 const timerLengthMinutes = moment.duration(timerLength, 's').format('mm:ss', {trim: false})
 
 return (
-  <div>
-    <input></input>
-    <Button onClick={handleStartStopClick}>{isStarted ? 'Stop' : 'Start'}</Button>
-    <Button onClick={handleReset}>Reset</Button>
-    <p>{timerLengthMinutes}</p>
-    <Button onClick={decrementTimerLength}>-1</Button>
-    <Button onClick={handleClose}>X</Button>
-    <Button onClick={incrementTimerLengthByTen}>+10</Button>
+  <div className="timer">
+    <Row>
+      <Col>
+      <input className="timerInput" ></input>
+      </Col>
+    </Row>
+    <Button className="timerButton" variant="outline-dark" onClick={handleStartStopClick}>{isStarted ? 'Stop' : 'Start'}</Button>
+    <Button className="timerButton" variant="outline-dark" onClick={handleReset}>Reset</Button>
+    <p className="counter">{timerLengthMinutes}</p>
+    <Button className="timerButton" variant="outline-dark" onClick={decrementTimerLength}>-1</Button>
+    <Button className="timerButton" variant="outline-dark" onClick={handleClose}>X</Button>
+    <Button className="timerButton" variant="outline-dark" onClick={incrementTimerLengthByTen}>+10</Button>
   </div>
 )
 }
   
-
-  
-
 export default Timer;

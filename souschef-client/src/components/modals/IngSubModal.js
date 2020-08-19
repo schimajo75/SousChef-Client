@@ -36,7 +36,7 @@ class IngSubModal extends React.Component {
     render() {
       return (
       <>
-        <Button variant="primary" onClick={this.handleShow}>
+        <Button variant="outline-danger" onClick={this.handleShow}>
           Ingredient Sub
         </Button>
   
@@ -46,7 +46,7 @@ class IngSubModal extends React.Component {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Ingredient Substitution</Modal.Title>
+            <Modal.Title className="ingSubModalTitle">Ingredient Substitution</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <Form>
@@ -66,9 +66,11 @@ class IngSubModal extends React.Component {
           </Row>
           </Modal.Body>
           <Modal.Footer>
+            {this.state.replacement.substitutes ? null : 
             <Button variant="primary" onClick={this.handleSubmit}>
-              Submit
+            Submit
             </Button>
+            }
           </Modal.Footer>
         </Modal>
       </>

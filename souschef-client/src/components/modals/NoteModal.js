@@ -28,7 +28,7 @@ class NoteModal extends React.Component {
     render() {
       return (
       <>
-        <Button variant="primary" onClick={this.handleShow}>
+        <Button className="addNote" variant="outline-dark" onClick={this.handleShow}>
           Add Note
         </Button>
   
