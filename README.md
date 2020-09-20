@@ -1,9 +1,7 @@
 SousMe
 ____________________________
 
-A web app providing a cooking dashboard that compiles and centralizes recipes and meal prep resources.
-
-SousMe enables home chefs to search a database of recipes and compile a list of favorites. It was designed for users that enjoy the process of achieving continual improvement of "favorite meals" through trial and error and improvisation.  SousMe is designed to be used as an assistant during the cooking process and provides:
+A web app created with React and JavaScript (frontend), SousMe enables home chefs to search a database of recipes and compile a list of favorites. It was designed for users that enjoy the process of achieving continual improvement of "favorite meals" through trial and error and improvisation.  SousMe is designed to be used as an assistant during the cooking process and provides:
 
 - multiple asynchronous timers to track cook times of items on different burners, ovens, etc
 - a Notes section so that individual users can keep a running commentary on specific recipes over multipple cooking attmepts to track improvements and successful improvisations
