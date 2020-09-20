@@ -1,4 +1,5 @@
-# souschef-client
+SousMe
+
 A web app providing a cooking dashboard that compiles and centralizes recipes and meal prep resources.
 
 SousMe enables home chefs to search a database of recipes and compile a list of favorites. It was designed for users that enjoy the process of achieving continual improvement of "favorite meals" through trial and error and improvisation.  SousMe is designed to be used as an assistant during the cooking process and provides:
