@@ -1,4 +1,5 @@
 SousMe
+____________________________
 
 A web app providing a cooking dashboard that compiles and centralizes recipes and meal prep resources.
 
