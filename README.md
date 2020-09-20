@@ -1,5 +1,4 @@
 # SousMe
-____________________________
 
 A web app created with React and JavaScript (frontend), SousMe enables home chefs to search a database of recipes and compile a list of favorites. It was designed for users that enjoy the process of achieving continual improvement of "favorite meals" through trial and error and improvisation.  SousMe is designed to be used as an assistant during the cooking process and provides:
 
